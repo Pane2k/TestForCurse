@@ -66,12 +66,12 @@
         }
 
         function GetUserInfoWithPrompt(){
-            let userSecondName = prompt("Введите вашу фамилию");
-            let userName = prompt("Введите ваше имя");
-            let userFatherName = prompt("Введите ваше отчество");
+            let userSecondName = prompt("Введите вашу фамилию", "Петров");
+            let userName = prompt("Введите ваше имя", "Петр");
+            let userFatherName = prompt("Введите ваше отчество", "Петрович");
 
-            let userAge = parseInt(prompt("Введите ваш возраст"));
-            let userGender = confirm("Ваш пол - мужской?");
+            let userAge = parseInt(prompt("Введите ваш возраст", "25"));
+            let userGender = confirm("Ваш пол - мужской?", true);
 
             return new User(userName, userSecondName, userFatherName, userAge, userGender);
         }
