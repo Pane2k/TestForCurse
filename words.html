@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function findThreeLongestWords(text) {
+
+            let words = text.split(/\s+|[,.\/]/); // Разбиваем текст на слова
+            let filteredWords = words.filter(word => word.length > 0); // Отфильтровываем пустые слова
+            let sortedWords = filteredWords.sort((a, b) => b.length - a.length); // Сортируем слова по длине от большего к меньшему
+            let threeLongestWords = sortedWords.slice(0, 3); // Получаем первые три слова
+
+            return threeLongestWords;
+        }
+
+        let userTextPrompt = prompt('Введите текст', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quas cupiditate aliquam in odio! Hic fugiat a sed magnam, quia mollitia obcaecati expedita, qui nostrum blanditiis exercitationem, totam maxime quam.');
+        let threeLongestWords = findThreeLongestWords(userTextPrompt);
+        alert('Три самых длинных слова в тексте:\n' + threeLongestWords.join(';\n'));
+    </script>
+</body>
+
+</html>

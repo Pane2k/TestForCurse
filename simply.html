@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function FindSimpleNumbers(rangeStart, rangeEnd){
+            let simple = [];
+            for(let i = rangeStart; i <= rangeEnd; i++){
+                if (i === 1){
+                    continue; // пропуск 1 так как она не является простым числом
+                }
+                let isSimple = true;
+                for (let j = 2; j < i; j++) {  // проверка на простое число
+                    if(i % j === 0){
+                        isSimple = false;
+                        break;
+                    }
+                }
+                
+                if(isSimple){
+                    simple.push(i); // добавление простого числа в массив
+                }
+            }
+            return simple.join(", ");
+        }
+
+        // Диапазон чисел
+        let rangeStart = 1;
+        let rangeEnd = 1000;
+
+        let result = FindSimpleNumbers(rangeStart, rangeEnd);
+        console.log(result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User{
+            constructor(userSecondName, userName, userFatherName, userAge, userGender){
+                this.userSecondName = this.normalizeString(userSecondName);
+                this.userName       = this.normalizeString(userName);
+                this.userFatherName = this.normalizeString(userFatherName);
+
+                this.userAge    = userAge;
+                this.userGender = userGender;
+            }
+            
+        
+            normalizeString(userString) {
+                let firstLetter = userString[0].toUpperCase();
+                let restLetters = userString.slice(1).toLowerCase();
+                
+                return firstLetter + restLetters;
+            }
+
+            ageOfPensionWoman   = 58;
+            ageOfPensionMan     = 63;
+
+            get ageOfPension(){
+                return this.userGender ? this.ageOfPensionWoman : this.ageOfPensionMan;
+            }
+
+            get isUserPensioner(){
+                return this.userAge >= this.ageOfPension ? 'да' : 'нет';
+            }
+
+            get fullName(){
+                return `${this.userName} ${this.userSecondName} ${this.userFatherName}`;
+            }
+
+            get age(){
+                return this.userAge;
+            }
+
+            get ageInDays(){
+                return this.userAge * 365;
+            }
+
+            get sex(){
+                return this.userGender ? "мужской" : "женский";
+            }
+        }
+
+        function GetUserInfoWithPrompt(){
+            let userSecondName = prompt("Введите вашу фамилию");
+            let userName = prompt("Введите ваше имя");
+            let userFatherName = prompt("Введите ваше отчество");
+
+            let userAge = parseInt(prompt("Введите ваш возраст"));
+            let userGender = confirm("Ваш пол - мужской?");
+
+            return new User(userName, userSecondName, userFatherName, userAge, userGender);
+        }
+
+        user = GetUserInfoWithPrompt();
+
+        alert(
+            `
+            ФИО: ${user.fullName}
+            возраст, лет: ${user.age} 
+            возраст, дней: ${user.ageInDays}
+            пол: ${user.sex}
+            пенсиноный возраст: ${user.isUserPensioner}
+            `
+        )
+    </script>
+</body>
+</html>
